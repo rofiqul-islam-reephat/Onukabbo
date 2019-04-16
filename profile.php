@@ -24,6 +24,19 @@
     $user = new User(0,$row['firstname'],$row['lastname'],$row['email'],$row['dob'],$row['about']);
   }
 
+  if(isset($_POST['updatebtn'])){
+      $firstname = clean_input($_POST['firstname']);
+      $lastname = clean_input($_POST['lastname']);
+      $about = clean_input($_POST['about']);
+      
+      $email = $_SESSION['email'];
+
+      $query = "UPDATE user SET firstname='$firstname' ,lastname='$lastname',about='$about'
+                WHERE email='$email'";
+
+      execute_query($query);
+
+  }
 
 ?>
 
@@ -82,6 +95,11 @@
                         <i class="fas fa-quote-left"></i>&nbsp&nbsp About &nbsp&nbsp
                         <i class="fas fa-quote-right"></i></label>
                         <div>
+                          <p class="text-center">
+                            <?php echo $user->bio ?>
+                          </p>
+                        </div>
+                        <div>
                           <p class="text-secondary"></p>
                         </div>
                     </div>
@@ -100,7 +118,7 @@
     <div class = "col-lg-7">
       <div class="container" id="updateprofilediv" style="display:none;">
         <h3 class=" text-center text-secondary mt-3 mb-3">Update Profile Information</h3>
-        <form method="post" id ="registerform" class="w-75 ml-5">
+        <form method="post" action="profile.php" id="updateform" class="w-75 ml-5">
                <div class="form-group">
                  <label for=""> <i class="text-success fas fa-user-alt"></i>&nbsp&nbsp First name</label>
                  <input required class="form-control" type="text" id="firstname" name="firstname" placeholder="Enter First Name"
@@ -116,8 +134,8 @@
                  <input required class="form-control" type="text" id="about" name="about" placeholder="Enter About"
                  value="<?php echo $user->bio?>">
                </div>
-           <button id ="updateinfobtn" type="submit" class="btn btn-success" name="registerbtn">Update</button>
-           <button id ="cancelbtn" type="submit" class="ml-5 btn btn-warning" name="registerbtn">Cancel</button>
+           <button id ="updateinfobtn"  type="submit" class="btn btn-success" name="updatebtn">Update</button>
+           <button id ="cancelbtn"  class="ml-5 btn btn-warning" name="registerbtn">Cancel</button>
          </form>
       </div>
 
@@ -129,9 +147,6 @@
     </div>
 
   </div>
-
-
-
 
 
   <!--Bootstrap Scripts Begin-->

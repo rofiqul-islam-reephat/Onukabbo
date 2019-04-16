@@ -123,14 +123,14 @@
     </div>
     <div class="col-lg-3 text-success">
       <div class="container">
-        <form action="classfiles/post.php" class="form-inline" method="POST">
+        <div class="form-inline">
           <div class="input-group mt-3">
-            <input type="text" class="form-control" name="serachques" placeholder="Search Onukabbo">
+            <input type="text" class="form-control" id="serachfield" placeholder="Search Onukabbo">
             <div class="input-group-prepend">
-              <button type="submit" name="searchbtn" class=" rounded-sm btn btn-outline-success"><i class="fas fa-search"></i></button>
+              <button id="searchbtn" class=" rounded-sm btn btn-outline-success"><i class="fas fa-search"></i></button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
     <div class="col-lg-3">
@@ -191,12 +191,16 @@
      
       </div>
       <div class="col-lg-8">
-
         
-        <div class="container" id="postdiv">
-          
+        <div class="container" id="postdiv">        
 
         </div>
+
+        <div class="container" id="searchdiv" style="display:none;">        
+
+        </div>
+
+
       </div>
       <div class="col-lg-3">
 

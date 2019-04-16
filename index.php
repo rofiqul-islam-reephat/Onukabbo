@@ -60,6 +60,27 @@ if(is_session_set()){
     </div>
   </div>
 
+
+  <div class="container" id="homediv">
+    <div class="row">
+      <div class="col-lg-2">
+     
+      </div>
+      <div class="col-lg-8">
+
+        
+        <div class="container" id="postdiv">
+          
+
+        </div>
+      </div>
+      <div class="col-lg-3">
+
+      </div>
+    </div>
+
+  </div>
+
   <!--Bootstrap Scripts Begin-->
   <script src="bootstrap/jquery-3.3.1.slim.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>

@@ -7,6 +7,8 @@ const signoutbtn = document.getElementById('signoutbtn');
 const profilebtn = document.getElementById('profilebtn');
 const submitpostbtn = document.getElementById('submitpostbtn');
 
+const serachbtn = document.getElementById('searchbtn');
+
 let imagefile = document.getElementById('imagefile');
 
 let title = document.getElementById('title');
@@ -121,6 +123,31 @@ cancelpostbtn.addEventListener("click",function(){
     homepostdiv.style.display = "block";
 });
 
+
+serachbtn.addEventListener('click',function(){
+
+  let xhr = new XMLHttpRequest();
+  let searchdiv = document.getElementById('searchdiv');
+  let serachfield = document.getElementById('serachfield');
+  let param = "q=search&keystring="+serachfield.value;
+
+  xhr.open("POST","pageserver.php",true);
+  xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+  xhr.send(param);
+  
+  xhr.onload = function (){
+
+    if(this.status==200){
+      postdiv.style.display = 'none';
+      searchdiv.innerHTML = this.responseText;
+      searchdiv.style.display = 'block';
+    }
+
+  }
+
+
+});
+
 //Loads all the post to the timeline
 function load_posts(){
 
@@ -145,5 +172,7 @@ function load_posts(){
 }
 
 load_posts();
+
+
 
 

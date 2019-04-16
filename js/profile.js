@@ -67,9 +67,10 @@ cancelbtn.addEventListener('click',function(){
 
 updateinfobtn.addEventListener('click',function(){
 
-    updateprofilediv.style.display = 'none';
-    userpostsdiv.style.display = 'block';
+    let firstname = document.getElementById('firstname');
+    let lastname = document.getElementById('lastname');
+    let about = document.getElementById('about');
 
-
+      
 
 });
