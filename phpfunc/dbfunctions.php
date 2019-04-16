@@ -42,6 +42,8 @@
 
         if($connection->query($query)==FALSE){
             $status = false;
+            echo $connection->error;
+            echo $query;
            
         }
 
@@ -62,8 +64,12 @@
         if($connection->query($query)==FALSE){
             echo $connection->error;
         }
+
+        $id = $connection->insert_id;
         
         $connection->close();
+
+        return $id;
     }
 
     function check_email($email){
@@ -128,6 +134,106 @@
         }
     
         return $flag;
+
+    }
+
+    function get_user_id($email){
+
+        $result = get_user_info($email);
+       
+        $userid = "";
+
+        if($result->num_rows>0){
+            
+           $row = $result->fetch_assoc();
+
+           $userid = $row['userid'];
+             
+               
+        }
+        else
+            echo "user not found";
+       
+        return $userid;
+
+    }
+
+
+
+    function insert_tag_if_new($tag){
+
+        $tag = strtolower($tag);
+
+        $query = "SELECT * FROM catagory WHERE cname='$tag'";
+
+        $connection = new mysqli(SERVERNAME , USERNAME , PASSWORD , DBNAME);
+
+        if($connection->connect_error){
+            echo $connection->connect_error;
+        }
+
+        $result = $connection->query($query);
+
+      
+        if($result->num_rows==0){
+            
+           $insertquery = "INSERT INTO catagory(cname) VALUES ('$tag')";
+
+           $connection->query($insertquery);
+                
+         }
+      
+        $connection->close();
+
+
+    }
+
+    function get_tag_id($tag){
+
+        $tag = strtolower($tag);
+
+        $query = "SELECT cid FROM catagory WHERE cname='$tag'";
+
+        $connection = new mysqli(SERVERNAME , USERNAME , PASSWORD , DBNAME);
+
+        if($connection->connect_error){
+            echo $connection->connect_error;
+        }
+
+        $result = $connection->query($query);
+
+        $tagid = -1;
+
+      
+        if($result->num_rows>0){
+            
+           $row = $result->fetch_assoc();
+
+           $tagid = $row['cid'];
+                
+         }
+      
+        $connection->close();
+
+        return $tagid;
+
+    }
+
+    function glue_post_tag($postid,$tagarray){
+
+        $connection =  new mysqli(SERVERNAME, USERNAME, PASSWORD,DBNAME);
+
+	    if($connection->connect_error){
+           echo $connection->connect_error;
+	    }
+
+        foreach($tagarray as $tag){
+            $tagid = get_tag_id($tag);
+            $query = "INSERT INTO posttag(pid,cid) VALUES ('$postid','$tagid')";
+            $connection->query($query);
+        }
+
+	    $connection->close();   
 
     }
     

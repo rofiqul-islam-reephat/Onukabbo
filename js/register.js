@@ -7,7 +7,8 @@ const siginbtn = document.getElementById('signinbtn');
 const registerbtn = document.getElementById('registerbtn');
 //div variable list
 let registerdiv = document.getElementById('registerdiv');
-//span variable list
+//text feild
+
 
 
 function age_cal(dateinput){

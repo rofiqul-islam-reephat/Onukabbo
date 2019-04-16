@@ -25,9 +25,19 @@ function verify_password($password,$hash){
 
    function clean_input($data){
 
+      $SERVERNAME = "localhost";
+      $USERNAME = "root";
+      $PASSWORD = "";
+      $DBNAME = "onukabbo";
+      $connection = new mysqli(SERVERNAME , USERNAME , PASSWORD ,DBNAME);  
+
       $data = trim($data);
       $data = stripcslashes($data);
       $data = htmlspecialchars($data);
+
+      $data = mysqli_real_escape_string($connection,$data);
+
+      $connection->close();
    
       return $data;
    

@@ -7,3 +7,5 @@ userpassword VARCHAR(255) NOT NULL,
 dob DATE NOT NULL,
 about TEXT
 );
+
+CREATE TABLE post(postid INT AUTO_INCREMENT  )

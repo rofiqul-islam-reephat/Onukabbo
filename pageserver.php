@@ -16,7 +16,7 @@ if(isset($_POST['q'])){
 
     if(strcmp($req,$chcekemail)==0){
         
-        $email = $_POST['email'];
+        $email = trim($_POST['email']);
         
         $result = check_email($email);
     
@@ -29,8 +29,8 @@ if(isset($_POST['q'])){
     }
     else if(strcmp($req,$signin)==0){
 
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
         
         $flag = is_valid_user($email,$password);
         
