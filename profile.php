@@ -25,6 +25,7 @@
   }
 
   if(isset($_POST['updatebtn'])){
+    
       $firstname = clean_input($_POST['firstname']);
       $lastname = clean_input($_POST['lastname']);
       $about = clean_input($_POST['about']);

@@ -8,11 +8,7 @@
   include 'phpfunc/querylist.php';
   include 'phpfunc/webfunctions.php';
 
-  if(!is_session_set()){
-    redirect("index.php");
-  }
 
- 
 
   $post = null;
   $comments = null;
@@ -53,6 +49,7 @@
   if(isset($_POST['commentbtn'])){
 
     $commentbody = $_POST['commentbody'];
+    $commentbody = clean_input($commentbody);
     $date =  date("Y/m/d");
     $userid = get_user_id($_SESSION['email']);
     $postid = $_GET['id'];
@@ -244,11 +241,32 @@
     <div class="col-lg-2">
       <?php
       
-          
-      
-      
+          if(isset($_SESSION['email'])){
+              $email = $_SESSION['email'];
+              $userid = get_user_id($email);
+              $postid = $_GET['id'];
+              $query = "SELECT userid FROM post WHERE postid='$postid'";
+              $result = execute_query_get_result($query);
+
+              if($result && $result->num_rows>0){
+
+                  $row = $result->fetch_assoc();
+                  
+                  if($row['userid']==$userid){
+                    echo "<div class=\"container\">
+                      <br>
+                      <button id = \"editbtn\" class = \"btn btn-success\"><i class=\"fas fa-edit\"></i> Edit  </button><br><br>
+                      <button id = \"delbtn\" class = \"btn btn-danger\"> <i class=\"fas fa-trash-alt\"></i> Delete</button>
+                    </div>
+                      ";
+
+                  }
+              }
+          }     
       
       ?>
+
+      
     </div>
 
   </div>

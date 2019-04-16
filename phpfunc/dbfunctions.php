@@ -55,6 +55,8 @@
 
     function execute_query($query){
 
+        
+
         $connection = new mysqli(SERVERNAME , USERNAME , PASSWORD , DBNAME);
 
         if($connection->connect_error){

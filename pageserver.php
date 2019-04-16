@@ -15,7 +15,7 @@ $loaduserpost = "loaduserposts";
 $signout = "signout";
 $search = "search";
 $trending = "loadtrending";
-$tags = "tags";
+$delpost = "delpost";
 
 function render_posts($result,$command){
 
@@ -164,8 +164,7 @@ if(isset($_POST['q'])){
                           LEFT JOIN catagory on posttag.cid = catagory.cid
                           GROUP BY catagory.cname ORDER BY COUNT(posttag.cid) DESC";
 
-        $bglist = array("bg-dark , bg-success" , "bg-primary","bg-secondary",
-                        "bg-warning",".bg-info");
+        $bglist = array("bg-dark" , "bg-success" , "bg-primary","bg-secondary","bg-warning","bg-info");
         
         
 
@@ -176,8 +175,10 @@ if(isset($_POST['q'])){
             while($tmprow = $resulttrend->fetch_assoc()){
                     
                 $tag = $tmprow['cname'];
+                //echo $tag;
                 $tagid = $tmprow['cid'];
                 $randindex = array_rand($bglist);
+                //echo $randindex;
              
 
                 echo "<a href=\"tagview.php?tag=$tagid\"><label  class=\"shadow-lg p-1 text-white rounded $bglist[$randindex] \">$tag</label> </a> <br>";
@@ -207,7 +208,8 @@ if(isset($_POST['q'])){
             render_posts($result,$loadposts);
         }
         else if(strcmp($req,$loaduserpost)==0){
-            $query = "SELECT * FROM post WHERE userid='$userid' ORDER BY postid DESC";
+
+             $query = "SELECT * FROM post WHERE userid='$userid' ORDER BY postid DESC";
 
              $result = execute_query_get_result($query);
        
@@ -234,6 +236,19 @@ if(isset($_POST['q'])){
                 render_posts($result,$search);
             }
         }
+    }
+    else if(strcmp($req , $delpost)==0){
+
+        $postid = $_POST['postid'];
+        
+        $query  = "DELETE  FROM post WHERE postid='$postid'";
+        $query2 = "DELETE FROM comments WHERE pid ='$postid'";
+    
+        echo $query;
+        execute_query($query2);
+        execute_query($query);
+
+
     }
 }     
  

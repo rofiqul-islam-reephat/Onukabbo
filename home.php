@@ -74,6 +74,7 @@
 
       
       foreach($tagarray as $tag){
+        $tag = trim($tag);
         insert_tag_if_new($tag);
       }
 
@@ -81,8 +82,8 @@
 
      glue_post_tag($id,$tagarray);
 
-    if($readyfile)
-       move_uploaded_file($_FILES['image']['tmp_name'],$filepath);
+     if($readyfile)
+         move_uploaded_file($_FILES['image']['tmp_name'],$filepath);
 
 
     }
