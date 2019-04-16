@@ -191,16 +191,20 @@
     </div>
   </div>
 
-  <div class="container" id="homepostdiv">
+  <div class="container" id="homediv">
     <div class="row">
       <div class="col-lg-2">
      
-
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-8">
 
+        
+        <div class="container" id="postdiv">
+          
+
+        </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-3">
 
       </div>
     </div>

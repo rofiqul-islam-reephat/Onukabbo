@@ -122,4 +122,29 @@ cancelpostbtn.addEventListener("click",function(){
     homepostdiv.style.display = "block";
 });
 
+//Loads all the post to the timeline
+function load_posts(){
+
+  let xhr = new XMLHttpRequest();
+  let param = "q=loadposts";
+  let postdiv = document.getElementById('postdiv');
+
+  xhr.open("POST","pageserver.php",true);
+  xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+  xhr.send(param);
+  
+  xhr.onload = function (){
+
+    if(this.status==200){
+
+      postdiv.innerHTML = this.responseText;
+
+    }
+
+  }
+
+}
+
+load_posts();
+
 

@@ -236,5 +236,20 @@
 	    $connection->close();   
 
     }
+
+    function execute_query_get_result($query){
+
+        $connection =  new mysqli(SERVERNAME, USERNAME, PASSWORD,DBNAME);
+
+	    if($connection->connect_error){
+           echo $connection->connect_error;
+        }
+
+       $result = $connection->query($query);
+
+	    $connection->close();  
+
+        return $result;
+    }
     
 ?>
