@@ -87,12 +87,7 @@
 
     }
 
-
   }
-  
-
-
-  
 
 ?>
 
@@ -187,6 +182,8 @@
     </div>
   </div>
 
+ 
+
   <div class="container" id="homediv">
     <div class="row">
       <div class="col-lg-3">
@@ -200,7 +197,7 @@
       <div class="col-lg-8">
         
         <div class="container" id="postdiv">        
-
+  
         </div>
 
         <div class="container" id="searchdiv" style="display:none;">        

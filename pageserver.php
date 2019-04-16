@@ -15,6 +15,7 @@ $loaduserpost = "loaduserposts";
 $signout = "signout";
 $search = "search";
 $trending = "loadtrending";
+$tags = "tags";
 
 function render_posts($result,$command){
 
@@ -158,8 +159,31 @@ if(isset($_POST['q'])){
           session_destroy();
     }
     else if(strcmp($req,$trending)==0){
-            
         
+        $trendingquery = "SELECT catagory.cname , catagory.cid from posttag
+                          LEFT JOIN catagory on posttag.cid = catagory.cid
+                          GROUP BY catagory.cname ORDER BY COUNT(posttag.cid) DESC";
+
+        $bglist = array("bg-dark , bg-success" , "bg-primary","bg-secondary",
+                        "bg-warning",".bg-info");
+        
+        
+
+        $resulttrend = execute_query_get_result($trendingquery);
+
+        if($resulttrend && $resulttrend->num_rows>0){
+            
+            while($tmprow = $resulttrend->fetch_assoc()){
+                    
+                $tag = $tmprow['cname'];
+                $tagid = $tmprow['cid'];
+                $randindex = array_rand($bglist);
+             
+
+                echo "<a href=\"tagview.php?tag=$tagid\"><label  class=\"shadow-lg p-1 text-white rounded $bglist[$randindex] \">$tag</label> </a> <br>";
+            };
+        }
+  
 
     }
     else if(strcmp($req,$loadposts)==0 || strcmp($req,$loaduserpost)==0 || strcmp($req,$search)==0){

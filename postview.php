@@ -6,6 +6,13 @@
   include 'classfiles/post.php';
   include 'classfiles/comment.php';
   include 'phpfunc/querylist.php';
+  include 'phpfunc/webfunctions.php';
+
+  if(!is_session_set()){
+    redirect("index.php");
+  }
+
+ 
 
   $post = null;
   $comments = null;
@@ -105,9 +112,9 @@
     </div>
     <div class="col-lg-3">
       <div class="container mt-3">
-</div>
+      </div>
     </div>
-  </div>
+</div>
 
   <div class="row">
     <div class="col-lg-3"></div>
@@ -179,7 +186,7 @@
                     }
 
                     echo "
-                    <div class=\"card\">
+                    <div class=\"card mt-3\">
                     <div class=\"card-body\">
                       <p class=\"text-dark\">
                         $tmpcomment->body
@@ -235,7 +242,13 @@
 
     </div>
     <div class="col-lg-2">
-
+      <?php
+      
+          
+      
+      
+      
+      ?>
     </div>
 
   </div>

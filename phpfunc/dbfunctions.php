@@ -271,6 +271,8 @@
 
        $result = $connection->query($query);
 
+       echo $connection->error;
+
 	    $connection->close();  
 
         return $result;
