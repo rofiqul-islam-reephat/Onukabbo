@@ -17,7 +17,7 @@ signoutbtn.addEventListener('click',function(){
   let xhr = new  XMLHttpRequest();
   let param = "q=signout";
 
-  xhr.open("POST","home.php",true);
+  xhr.open("POST","pageserver.php",true);
   xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
   xhr.send(param);
 
@@ -26,7 +26,6 @@ signoutbtn.addEventListener('click',function(){
       window.location.replace("index.php");
     }
   }
-
 
 });
 

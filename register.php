@@ -190,7 +190,6 @@
           <button id ="registerbtn" type="submit" class="btn btn-success" name="registerbtn">Register</button>
         </form>
       </div>
-
     </div>
 
     <div class="col-lg-5">

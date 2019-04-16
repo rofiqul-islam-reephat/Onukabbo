@@ -19,7 +19,6 @@
                     <img class="mt-3 " src="img/1.jpg" style="width : 100px ; height : 100px;" alt="">
                 </div>
               </div>
-
               <div class="col-lg-8">
                 <div class="container mt-2">
                     <h5 class=" card-title text-dark">How we gonna change the world</h5>

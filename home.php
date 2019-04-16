@@ -10,13 +10,7 @@
     redirect("index.php");
   }
 
-  if(isset($_POST['q'])){
-    $command = $_POST['q'];
-    if(strcmp($command,"signout")==0){
-      session_destroy();
-    }
-  }
-
+ 
  
 
   if(isset($_POST['submitpostbtn'])){

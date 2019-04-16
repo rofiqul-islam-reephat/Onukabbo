@@ -10,6 +10,8 @@ $chcekemail = "checkemail";
 $register= "register";
 $signin = "signin";
 $loadposts = "loadposts";
+$loaduserpost = "loaduserposts";
+$signout = "signout";
 
 if(isset($_POST['q'])){
 
@@ -43,9 +45,23 @@ if(isset($_POST['q'])){
             echo "invalid";
         }
     }
-    else if(strcmp($req,$loadposts)==0){
+    else if(strcmp($req,$signout)==0){ 
+          session_destroy();
+    }
+    else if(strcmp($req,$loadposts)==0 || strcmp($req,$loaduserpost)==0){
 
-        $query = "SELECT * FROM post ORDER BY postid DESC";
+        $query = "";
+
+        $email = $_SESSION['email'];
+
+        $userid = get_user_id($email);
+
+        if(strcmp($req,$loadposts)==0 ){
+            $query = "SELECT * FROM post ORDER BY postid DESC";
+        }
+        else if(strcmp($req,$loaduserpost)==0){
+            $query = "SELECT * FROM post WHERE userid='$userid' ORDER BY postid DESC";
+        }
 
         $result = execute_query_get_result($query);
        
