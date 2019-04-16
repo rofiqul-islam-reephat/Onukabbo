@@ -14,12 +14,13 @@ $loadposts = "loadposts";
 $loaduserpost = "loaduserposts";
 $signout = "signout";
 $search = "search";
+$trending = "loadtrending";
 
 function render_posts($result,$command){
 
     $msg = '';
 
-    if($result->num_rows>0){
+    if($result && $result->num_rows>0){
     
         if(strcmp($command,"search")==0){
              $msg.= "Found these Resutls"; 
@@ -51,10 +52,11 @@ function render_posts($result,$command){
             $userres = execute_query_get_result($query);
 
             $author = '';
+            $authorid = '';
 
             if($userres->num_rows>0){
                 $tmpres = $userres->fetch_assoc();
-                $author = $tmpres['lastname'];
+                $author = $tmpres['lastname'];                
             }
 
             //$tmpbody = "";
@@ -66,12 +68,11 @@ function render_posts($result,$command){
             }
 
         
-            
             if(strcmp($thumbnail,"")==0)
                 $thumbnail.="img/noimg.png";
 
             echo"
-            <div class=\"card shadow mt-2\" id=\"$postid\">
+            <div class=\"card shadow mt-2\">
                 <div class = \"row\">
                   <div class=\"col-lg-3\">
                     <div class=\"container\">
@@ -80,7 +81,7 @@ function render_posts($result,$command){
                   </div>
                   <div class=\"col-lg-8\">
                     <div class=\"container mt-2\">
-                        <h5 class=\" card-title text-dark\">$title</h5>
+                        <a href=\"postview.php?id=$postid\"<h4 class=\" text-dark\">$title</h4></a>
                         <p class=\" mt-3 mb-3 text-secondary card-text\">$body</p>
                     </div>
                     <div class=\"row\">
@@ -108,7 +109,6 @@ function render_posts($result,$command){
     }
     else{
 
-     
         if(strcmp($command,"search")==0)
             $msg.= "No Result Found";
         else if(strcmp($command,"loadposts")==0)
@@ -157,6 +157,11 @@ if(isset($_POST['q'])){
     else if(strcmp($req,$signout)==0){ 
           session_destroy();
     }
+    else if(strcmp($req,$trending)==0){
+            
+        
+
+    }
     else if(strcmp($req,$loadposts)==0 || strcmp($req,$loaduserpost)==0 || strcmp($req,$search)==0){
 
        // echo "yes";
@@ -189,6 +194,8 @@ if(isset($_POST['q'])){
            
             $string = $_POST['keystring'];
 
+            $string = clean_input($string);
+
             $tmp = explode(" ",$string);
 
             $keywords = array_diff($tmp,$skipword);
@@ -196,19 +203,16 @@ if(isset($_POST['q'])){
 
             foreach($keywords as $key){
 
-
                 $query = "SELECT * FROM post WHERE UPPER(title) LIKE  UPPER('%$key%')";
 
                 $result = execute_query_get_result($query);
 
                 render_posts($result,$search);
-                
             }
-            
         }
     }
-
-}
+}     
+ 
 
 
 ?>

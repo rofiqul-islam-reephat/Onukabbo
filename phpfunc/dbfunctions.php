@@ -96,6 +96,8 @@
 
     function get_user_info($email){
 
+        
+
         $query = "SELECT * FROM user WHERE email='$email'";;
 
         $connection = new mysqli(SERVERNAME , USERNAME , PASSWORD , DBNAME);
@@ -112,6 +114,28 @@
         return $result;
 
     }
+
+    function get_user_name($id){
+
+        
+        $query = "SELECT firstname , lastname FROM user WHERE userid='$id'";;
+
+        $connection = new mysqli(SERVERNAME , USERNAME , PASSWORD , DBNAME);
+
+        if($connection->connect_error){
+            echo $connection->connect_error;
+        }
+
+        $result = $connection->query($query);  
+
+      
+        $connection->close();
+
+        return $result;
+
+    }
+
+    
 
     function is_valid_user($email,$password){
                
@@ -144,7 +168,7 @@
         $userid = "";
 
         if($result->num_rows>0){
-            
+                
            $row = $result->fetch_assoc();
 
            $userid = $row['userid'];
@@ -251,5 +275,7 @@
 
         return $result;
     }
+
+    
     
 ?>

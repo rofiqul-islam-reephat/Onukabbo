@@ -111,10 +111,12 @@
 
 <body>
 
+
+
   <div class="row">
     <div class="col-lg-2">
       <div class="row">
-        <img src="img/logo.jpg" alt="logo" style="height:70px; width:190px; margin-left:20%;">
+        <a href="home.php"><img src="img/logo.jpg" alt="logo" style="height:70px; width:190px; margin-left:20%;"></a>
       </div>
     </div>
     <div class="col-lg-4">
@@ -187,8 +189,13 @@
 
   <div class="container" id="homediv">
     <div class="row">
-      <div class="col-lg-2">
-     
+      <div class="col-lg-3">
+        <div class="container mt-5">
+          <h3 class="text-secondary mt-5"> <i class="text-danger fas fa-fire"></i> Trending topics</h3>
+        </div>
+         <div class="container mt-5 text-center" id="trendingdiv">
+           
+         </div>     
       </div>
       <div class="col-lg-8">
         
@@ -202,7 +209,7 @@
 
 
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-1">
 
       </div>
     </div>

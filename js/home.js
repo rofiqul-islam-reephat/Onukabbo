@@ -171,7 +171,36 @@ function load_posts(){
 
 }
 
+function load_treding(){
+  
+  let xhr = new XMLHttpRequest();
+  let param = "q=loadtrending";
+  let trendingdiv = document.getElementById('trendingdiv');
+
+  xhr.open("POST","pageserver.php",true);
+  xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+  xhr.send(param);
+  
+  xhr.onload = function (){
+
+    if(this.status==200){
+
+      trendingdiv.innerHTML = this.responseText;
+
+    }
+
+  }
+
+
+
+}
+
+load_treding();
+
 load_posts();
+
+
+
 
 
 

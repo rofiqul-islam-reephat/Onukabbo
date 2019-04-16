@@ -45,7 +45,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <title>Home</title>
+  <title>Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width , initial-scale = 1.0">
   <link rel="stylesheet" href="fontawesome/css/all.css">
@@ -57,7 +57,7 @@
 <div class="row">
     <div class="col-lg-2">
       <div class="row">
-        <img src="img/logo.jpg" alt="logo" style="height:70px; width:190px; margin-left:20%;">
+      <a href="home.php"><img src="img/logo.jpg" alt="Home" style="height:70px; width:190px; margin-left:20%;"></a>
       </div>
     </div>
     <div class="col-lg-2">

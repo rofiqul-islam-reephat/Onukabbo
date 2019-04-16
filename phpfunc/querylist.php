@@ -27,6 +27,14 @@
                         cid INT NOT NULL,
                         PRIMARY KEY(pid,cid))";
 
+    $commenttable = "comments( commentid INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+                               body TEXT NOT NULL,
+                               commentdate DATE NOT NULL,
+                               uid INT NOT NULL,
+                               pid INT NOT NULL,
+                               FOREIGN KEY(pid) REFERENCES post(postid))";
+                        
+
 
 
 
