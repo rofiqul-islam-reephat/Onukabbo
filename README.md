@@ -24,3 +24,8 @@ Onukabbo is blogging website built blog lovers. You can share your thoughts, dis
 4. JavaScript
 5. PHP
 6. MySQL
+
+### Things I Learned
+
+I studied vanila javascript for the project. Learned about good practices about web development like ** securely ** storing password to database using 
+** hashing with Salt ** ,  ** responsive UI design ** , ** web accssbility **.
