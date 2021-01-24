@@ -5,7 +5,7 @@
 
 Onukabbo is blogging website built blog lovers. You can share your thoughts, discuss topics in Onukabbo. It encrouges microblogging by limiting post size.
 
-### Key Features
+- ![#1589F0]### Key Features`#1589F0`
 
 1. User registration
 2. User log in
