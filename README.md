@@ -1,18 +1,20 @@
-# Answerhive
-### A Question and Answer website.
+# OnuKabbo
+### An awesome blogging website !
 
 ### Description
-Answer
+
+Onukabbo is blogging website built blog lovers. You can share your thoughts, discuss topics in Onukabbo. It encrouges microblogging by limiting post size.
 
 ### Key Features
 
 
 1. User registration
 2. User log in
-3. Ask a question by posting
+3. Create blog ost with images
 4. Update user profile.
-5. Answer a question.
-6. Search Question.
+5. Comment on posts.
+6. Search posts.
+7. Read random articles.
 
 
 ### Tecnology Used
@@ -26,7 +28,8 @@ Answer
 
 ### Things I Learned
 
-Tried to implement the project using basic knowledge about the technologies. Tried the grasp the ideas of web development by implementing the project
+I studied vanila javascript for the project. Learned about good practices about web development like + **securely** storing password to database using 
+**hashing with Salt** ,  **responsive UI design** , **web accssbility**.
 
 ### Screenshots from the Project
 
